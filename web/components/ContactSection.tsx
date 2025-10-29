@@ -232,7 +232,7 @@ export default function ContactSection() {
                 type="submit"
                 className="w-full py-3.5 sm:py-4 bg-white hover:bg-gray-100 text-gray-900 rounded-full font-medium transition-all hover:scale-[1.02] transform text-sm sm:text-base"
               >
-                Submit inquiry
+                Submit inquiry 
               </button>
             </form>
           </div>
