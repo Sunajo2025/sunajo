@@ -15,7 +15,7 @@ export default function ContactSection() {
     projectDetails: '',
   });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Replace with your actual EmailJS keys
@@ -59,11 +59,12 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="min-h-screen relative overflow-hidden flex items-center py-16 sm:py-20 px-4 sm:px-8"
+      className="min-h-[100svh] relative overflow-hidden flex items-center py-16 sm:py-20 px-4 sm:px-8 bg-black"
     >
       {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] opacity-30"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#000000]/40 to-[#000814]/90"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:64px_64px] opacity-50"></div>
+      <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-[#001233]/30 via-transparent to-transparent"></div>
+      <div className="absolute -bottom-20 right-1/3 w-96 h-96 bg-royalblue/10 blur-3xl rounded-full animate-pulse-slow"></div>
 
       <div className="max-w-7xl mx-auto w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">

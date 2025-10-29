@@ -18,7 +18,7 @@ export default function HomeHeroSection() {
   ];
 
   return (
-    <section className="min-h-screen h-screen relative overflow-hidden flex items-center justify-center px-4 sm:px-6 md:px-8">
+    <section className="min-h-[100svh] h-[100svh] relative overflow-hidden flex items-center justify-center px-4 sm:px-6 md:px-8 bg-black">
       {/* Hero Content */}
       <div className="max-w-5xl mx-auto w-full text-center z-10">
         <div className="space-y-4 sm:space-y-6 animate-fadeIn">
@@ -142,7 +142,10 @@ export default function HomeHeroSection() {
       </svg>
 
       {/* Background & floating elements */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,black,transparent)]"></div>
+      <div
+        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,black,transparent)]"
+        style={{ WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent)' }}
+      ></div>
       <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-2 h-2 bg-cyan-400/60 rounded-full animate-pulse"></div>
       <div className="absolute top-20 sm:top-40 right-16 sm:right-32 w-1.5 h-1.5 bg-cyan-300/60 rounded-full animate-ping"></div>
       <div className="absolute bottom-20 sm:bottom-40 left-20 sm:left-40 w-1.5 h-1.5 bg-cyan-400/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
