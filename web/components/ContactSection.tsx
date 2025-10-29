@@ -15,7 +15,7 @@ export default function ContactSection() {
     projectDetails: '',
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Replace with your actual EmailJS keys
