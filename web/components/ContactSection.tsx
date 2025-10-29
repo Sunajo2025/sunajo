@@ -7,6 +7,8 @@ import emailjs from 'emailjs-com';
 export default function ContactSection() {
   const [selectedService, setSelectedService] = useState('');
   const [selectedBudget, setSelectedBudget] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -15,8 +17,24 @@ export default function ContactSection() {
     projectDetails: '',
   });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate all fields are filled
+    if (!formData.fullName.trim() || !formData.email.trim() || !formData.companyName.trim() || 
+        !formData.phoneNumber.trim() || !formData.projectDetails.trim()) {
+      alert('⚠️ Please fill in all required fields.');
+      return;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert('⚠️ Please enter a valid email address.');
+      return;
+    }
+
+    setIsSubmitting(true);
 
     // Replace with your actual EmailJS keys
     const SERVICE_ID = 'service_qfgdwoj';
@@ -36,18 +54,25 @@ export default function ContactSection() {
     try {
       const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
       console.log('SUCCESS:', result.text);
-      alert('✅ Your inquiry has been sent successfully!');
+      
+      setIsSuccess(true);
+      
+      setTimeout(() => {
+        setFormData({
+          fullName: '',
+          email: '',
+          companyName: '',
+          phoneNumber: '',
+          projectDetails: '',
+        });
+        setIsSubmitting(false);
+        setIsSuccess(false);
+      }, 3000);
 
-      setFormData({
-        fullName: '',
-        email: '',
-        companyName: '',
-        phoneNumber: '',
-        projectDetails: '',
-      });
     } catch (error) {
       console.error('FAILED:', error);
       alert('❌ Something went wrong. Please try again later.');
+      setIsSubmitting(false);
     }
   };
 
@@ -60,6 +85,7 @@ export default function ContactSection() {
     <section
       id="contact"
       className="min-h-screen relative overflow-hidden flex items-center py-16 sm:py-20 px-4 sm:px-8"
+      style={{ backgroundColor: '#000000' }}
     >
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:64px_64px] opacity-50"></div>
@@ -161,7 +187,7 @@ export default function ContactSection() {
 
           {/* Right Column - Form */}
           <div className="animate-slideUp" style={{ animationDelay: '0.2s' }}>
-            <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
+            <div className="space-y-4 sm:space-y-6">
               {/* Full Name & Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
@@ -173,6 +199,7 @@ export default function ContactSection() {
                     className="w-full px-4 py-3 sm:py-3.5 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-royalblue transition-colors"
                     placeholder="Enter your name"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -184,6 +211,7 @@ export default function ContactSection() {
                     className="w-full px-4 py-3 sm:py-3.5 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-royalblue transition-colors"
                     placeholder="Enter your email"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -199,6 +227,7 @@ export default function ContactSection() {
                     className="w-full px-4 py-3 sm:py-3.5 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-royalblue transition-colors"
                     placeholder="Enter your company name"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -210,6 +239,7 @@ export default function ContactSection() {
                     className="w-full px-4 py-3 sm:py-3.5 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-royalblue transition-colors"
                     placeholder="Enter your phone number"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -224,17 +254,38 @@ export default function ContactSection() {
                   className="w-full px-4 py-3 sm:py-3.5 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-royalblue transition-colors resize-none"
                   placeholder="Tell us about your project"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
               {/* Submit Button */}
               <button
-                type="submit"
-                className="w-full py-3.5 sm:py-4 bg-white hover:bg-gray-100 text-gray-900 rounded-full font-medium transition-all hover:scale-[1.02] transform text-sm sm:text-base"
+                type="button"
+                onClick={handleSubmit}
+                disabled={isSubmitting || isSuccess}
+                className="w-full py-3.5 sm:py-4 rounded-full font-medium transition-all transform text-sm sm:text-base cursor-pointer relative overflow-hidden"
+                style={{
+                  background: isSuccess 
+                    ? 'linear-gradient(to right, royalblue, white)' 
+                    : '#ffffff',
+                  color: '#111827',
+                  opacity: isSubmitting && !isSuccess ? 0.8 : 1,
+                }}
               >
-                Submit inquiry
+                {isSuccess ? (
+                  <span className="flex items-center justify-center">
+                    ✓ Message Delivered!
+                  </span>
+                ) : isSubmitting ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <span className="inline-block w-4 h-4 border-2 border-gray-900 border-t-transparent rounded-full animate-spin"></span>
+                    Sending...
+                  </span>
+                ) : (
+                  'Submit inquiry'
+                )}
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
