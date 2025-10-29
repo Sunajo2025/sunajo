@@ -2,7 +2,7 @@
 
 import { X, Linkedin, Instagram } from 'lucide-react';
 
-export default function BannerComponent() {
+export default function CalendlyHeroSection() {
   return (
     <section className="relative h-80 md:h-90 lg:h-100 w-full flex items-end overflow-hidden text-white">
       
@@ -19,7 +19,7 @@ export default function BannerComponent() {
           backgroundSize: '20px 20px',
         }}
       >
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-black/25"></div>
       </div>
 
       {/* Main Content */}
@@ -31,27 +31,28 @@ export default function BannerComponent() {
             className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug"
             style={{ fontFamily: '"Poppins", sans-serif' }}
           >
-            Crafting{' '}
+            Schedule Your{' '}
             <span
               style={{
-                background: 'linear-gradient(to right, royalblue, white)',
+                background: 'linear-gradient(to right, white, royalblue)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              ideas
+              Discovery Call
             </span>{' '}
-            into impact
+            with Us
           </p>
 
           <p className="text-sm md:text-base text-gray-400 font-light max-w-md mx-auto sm:mx-0">
-            We transform creativity into digital experiences that inspire, engage, and elevate brands worldwide.
+            Let’s connect to discuss your vision, goals, or next big idea.  
+            Pick a time that works best for you — and we’ll handle the rest.  
           </p>
         </div>
 
-        {/* Right Side Contact Icons - Hidden on mobile */}
+        {/* Right Side Social Icons — hidden on small screens */}
         <div className="hidden sm:flex flex-col items-end space-y-2">
-          <span className="text-sm text-gray-400 mr-1">Contact With Us!</span>
+          <span className="text-sm text-gray-400 mr-1">Follow & Connect</span>
           
           <div className="flex gap-2">
             <a
@@ -83,7 +84,7 @@ export default function BannerComponent() {
 
       {/* Font Import */}
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
       `}</style>
     </section>
   );

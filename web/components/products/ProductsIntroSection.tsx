@@ -20,13 +20,13 @@ export default function ProductsIntroSection() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] opacity-50"></div>
       
       {/* Main Container */}
-      <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 relative z-10">
+      <div className="w-full px-4 max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 relative z-10">
         
         {/* Left Section: Text Content */}
         <div className="flex flex-col text-left w-full md:w-auto md:flex-1 animate-slideUp">
 
           {/* Tagline */}
-          <div className="mb-4 sm:mb-6">
+          <div className="mb-4 sm:mb-6 ">
             <span 
               className="inline-block px-4 py-2 text-xs sm:text-sm font-medium tracking-wider backdrop-blur-sm"
               style={{ 
@@ -44,7 +44,7 @@ export default function ProductsIntroSection() {
 
           {/* Main Heading */}
           <h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-white mb-6 text-center md:text-left"
+            className="text-4xl  md:text-5xl lg:text-6xl font-light leading-tight text-white mb-6 md:text-left"
             style={{ fontFamily: '"Poppins", system-ui, sans-serif' }}
           >
             Building{' '}

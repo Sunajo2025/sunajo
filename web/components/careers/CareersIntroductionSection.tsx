@@ -21,7 +21,7 @@ export default function CareersIntroductionSection() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] opacity-50"></div>
       
       {/* Content Container */}
-      <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 relative z-10">
+      <div className="w-full px-2 max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 relative z-10">
         
         {/* Left Side: Text Content */}
         <div className="flex flex-col text-left w-full md:w-auto md:flex-1 animate-slideUp">

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
@@ -14,9 +15,21 @@ export default function ContactSection() {
     phoneNumber: '',
     projectDetails: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Check if fields are empty
+    if (!formData.fullName.trim() || !formData.email.trim() || !formData.companyName.trim() || 
+        !formData.phoneNumber.trim() || !formData.projectDetails.trim()) {
+      alert('⚠️ Please fill in all required fields.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitSuccess(false);
 
     // Replace with your actual EmailJS keys
     const SERVICE_ID = 'service_qfgdwoj';
@@ -36,24 +49,37 @@ export default function ContactSection() {
     try {
       const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
       console.log('SUCCESS:', result.text);
-      alert('✅ Your inquiry has been sent successfully!');
-
-      setFormData({
-        fullName: '',
-        email: '',
-        companyName: '',
-        phoneNumber: '',
-        projectDetails: '',
-      });
+      
+      setSubmitSuccess(true);
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setFormData({
+          fullName: '',
+          email: '',
+          companyName: '',
+          phoneNumber: '',
+          projectDetails: '',
+        });
+        setSubmitSuccess(false);
+      }, 3000);
     } catch (error) {
       console.error('FAILED:', error);
       alert('❌ Something went wrong. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const handleScrollToNext = () => {
     const nextSection = document.getElementById('footer');
     if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const router = useRouter();
+
+  const handleNavigateToCalendly = () => {
+    router.push('/calendly');
   };
 
   return (
@@ -107,55 +133,64 @@ export default function ContactSection() {
 
               {/* Book a free call button */}
               <div
-                className="w-full md:w-auto flex justify-start animate-slideUp pt-3 sm:pt-4"
-                style={{ animationDelay: '0.4s' }}
-              >
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={handleScrollToNext}
-                  className="cursor-pointer relative inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium transition transform text-sm sm:text-base tracking-wide group overflow-visible"
-                  style={{
-                    background: 'linear-gradient(to right, royalblue, black)',
-                    fontFamily: '"Inter", system-ui, sans-serif',
-                  }}
-                >
-                  <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none" style={{ padding: '2px' }}>
-                    <div className="absolute inset-0 animate-border-rotate">
-                      <div
-                        className="absolute w-16 h-full"
-                        style={{
-                          background: 'linear-gradient(90deg, transparent, white, rgba(65, 105, 225, 0.9), transparent)',
-                          filter: 'blur(8px)',
-                        }}
-                      />
-                    </div>
-                    <div className="absolute inset-[2px] rounded-full" style={{ background: 'linear-gradient(to right, royalblue, black)' }} />
-                  </div>
+      className="w-full md:w-auto flex justify-start animate-slideUp pt-3 sm:pt-4"
+      style={{ animationDelay: '0.4s' }}
+    >
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.97 }}
+        onClick={handleNavigateToCalendly}
+        className="cursor-pointer relative inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium transition transform text-sm sm:text-base tracking-wide group overflow-visible"
+        style={{
+          background: 'linear-gradient(to right, royalblue, black)',
+          fontFamily: '"Inter", system-ui, sans-serif',
+        }}
+      >
+        <div
+          className="absolute inset-0 rounded-full overflow-hidden pointer-events-none"
+          style={{ padding: '2px' }}
+        >
+          <div className="absolute inset-0 animate-border-rotate">
+            <div
+              className="absolute w-16 h-full"
+              style={{
+                background:
+                  'linear-gradient(90deg, transparent, white, rgba(65, 105, 225, 0.9), transparent)',
+                filter: 'blur(8px)',
+              }}
+            />
+          </div>
+          <div
+            className="absolute inset-[2px] rounded-full"
+            style={{
+              background: 'linear-gradient(to right, royalblue, black)',
+            }}
+          />
+        </div>
 
-                  <span
-                    className="z-10 relative"
-                    style={{
-                      background: 'linear-gradient(to right, white, royalblue)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      fontWeight: '600',
-                    }}
-                  >
-                    Book a free call
-                  </span>
-                  <span
-                    className="z-10 relative transition-transform group-hover:translate-x-1"
-                    style={{
-                      background: 'linear-gradient(to right, white, royalblue)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
-                  >
-                    →
-                  </span>
-                </motion.button>
-              </div>
+        <span
+          className="z-10 relative"
+          style={{
+            background: 'linear-gradient(to right, white, royalblue)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            fontWeight: '600',
+          }}
+        >
+          Book a free call
+        </span>
+        <span
+          className="z-10 relative transition-transform group-hover:translate-x-1"
+          style={{
+            background: 'linear-gradient(to right, white, royalblue)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
+          →
+        </span>
+      </motion.button>
+    </div>
             </div>
           </div>
 
@@ -230,9 +265,27 @@ export default function ContactSection() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full py-3.5 sm:py-4 bg-white hover:bg-gray-100 text-gray-900 rounded-full font-medium transition-all hover:scale-[1.02] transform text-sm sm:text-base"
+                disabled={isSubmitting || submitSuccess}
+                className="w-full cursor-pointer py-3.5 sm:py-4 bg-white hover:bg-gray-100 text-gray-900 rounded-full font-medium transition-all hover:scale-[1.02] transform text-sm sm:text-base disabled:opacity-90 disabled:cursor-not-allowed disabled:hover:scale-100 relative overflow-hidden"
               >
-                Submit inquiry 
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Processing...
+                  </span>
+                ) : submitSuccess ? (
+                  <span className="flex items-center justify-center gap-2 animate-successPulse">
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Get you soon!
+                  </span>
+                ) : (
+                  'Submit inquiry'
+                )}
               </button>
             </form>
           </div>
@@ -266,6 +319,32 @@ export default function ContactSection() {
         }
         .animate-border-rotate {
           animation: border-rotate 3s linear infinite;
+        }
+
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        .animate-spin {
+          animation: spin 1s linear infinite;
+        }
+
+        @keyframes successPulse {
+          0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.9;
+            transform: scale(1.05);
+          }
+        }
+        .animate-successPulse {
+          animation: successPulse 0.6s ease-out;
         }
       `}</style>
     </section>

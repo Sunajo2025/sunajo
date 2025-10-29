@@ -1,5 +1,5 @@
 'use client';
-
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 
 export default function ContactCTASection() {
@@ -8,6 +8,10 @@ export default function ContactCTASection() {
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+  const router = useRouter();
+  const handleNavigate = () => {
+    router.push('/contact');
   };
 
   return (
@@ -48,59 +52,57 @@ export default function ContactCTASection() {
           style={{ animationDelay: '0.3s' }}
         >
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={handleScrollToContact}
-            className="cursor-pointer relative inline-flex items-center gap-2 px-8 py-3 sm:py-3.5 rounded-full font-medium transition transform text-sm sm:text-base tracking-wide group overflow-visible"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.98 }}
+      onClick={handleNavigate}
+      className="cursor-pointer relative inline-flex items-center gap-2 px-8 py-3 sm:py-3.5 rounded-full font-medium transition transform text-sm sm:text-base tracking-wide group overflow-visible"
+      style={{
+        background: 'linear-gradient(to right, royalblue, black)',
+        fontFamily: '"Inter", system-ui, sans-serif',
+      }}
+    >
+      <div
+        className="absolute inset-0 rounded-full overflow-hidden pointer-events-none"
+        style={{ padding: '2px' }}
+      >
+        <div className="absolute inset-0 animate-border-rotate">
+          <div
+            className="absolute w-16 h-full"
             style={{
-              background: 'linear-gradient(to right, royalblue, black)',
-              fontFamily: '"Inter", system-ui, sans-serif',
+              background:
+                'linear-gradient(90deg, transparent, white, rgba(65, 105, 225, 0.9), transparent)',
+              filter: 'blur(8px)',
             }}
-          >
-            {/* Animated Border Wrapper */}
-            <div
-              className="absolute inset-0 rounded-full overflow-hidden pointer-events-none"
-              style={{ padding: '2px' }}
-            >
-              <div className="absolute inset-0 animate-border-rotate">
-                <div
-                  className="absolute w-16 h-full"
-                  style={{
-                    background:
-                      'linear-gradient(90deg, transparent, white, rgba(65, 105, 225, 0.9), transparent)',
-                    filter: 'blur(8px)',
-                  }}
-                />
-              </div>
-              {/* Inner Mask */}
-              <div
-                className="absolute inset-[2px] rounded-full"
-                style={{ background: 'linear-gradient(to right, royalblue, black)' }}
-              />
-            </div>
+          />
+        </div>
+        <div
+          className="absolute inset-[2px] rounded-full"
+          style={{ background: 'linear-gradient(to right, royalblue, black)' }}
+        />
+      </div>
 
-            <span
-              className="z-10 relative"
-              style={{
-                background: 'linear-gradient(to right, white, royalblue)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                fontWeight: '600',
-              }}
-            >
-              Contact Us
-            </span>
-            <span
-              className="z-10 relative transition-transform group-hover:translate-x-1"
-              style={{
-                background: 'linear-gradient(to right, white, royalblue)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              →
-            </span>
-          </motion.button>
+      <span
+        className="z-10 relative"
+        style={{
+          background: 'linear-gradient(to right, white, royalblue)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          fontWeight: '600',
+        }}
+      >
+        Contact Us
+      </span>
+      <span
+        className="z-10 relative transition-transform group-hover:translate-x-1"
+        style={{
+          background: 'linear-gradient(to right, white, royalblue)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}
+      >
+        →
+      </span>
+    </motion.button>
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 import ScrollToTopButton from '@/components/ScrollToTopButton'
+import PageTransitionLoader from '@/components/PageTransitionLoader'
 import './globals.css'
 import { Raleway, Poppins } from 'next/font/google'
 
@@ -32,7 +33,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`${raleway.className} ${poppins.className} bg-[#0a1420] text-white antialiased`}
       >
-        
+        <PageTransitionLoader />
         <main>{children}</main>
         <ScrollToTopButton/>
       </body>
