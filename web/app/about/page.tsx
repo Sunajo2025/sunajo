@@ -5,6 +5,7 @@ import AboutIntroductionSection from '@/components/about/AboutIntroductionSectio
 import AboutContentSection from '@/components/about/AboutContentSection'
 import MissionSection from '@/components/about/MissionSection'
 import LeadershipTeamSection from '@/components/about/LeadershipTeamSection'
+import InsightsSection from '@/components/about/InsightsSection'
 
 export default function AboutPage() {
   return (
@@ -14,7 +15,8 @@ export default function AboutPage() {
       <AboutIntroductionSection/>
        <MissionSection/>
       <AboutContentSection/>
-      <LeadershipTeamSection/>     
+      <LeadershipTeamSection/>
+      {/* <InsightsSection/>      */}
       <Footer />
     </>
   )

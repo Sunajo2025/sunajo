@@ -16,7 +16,10 @@ const poppins = Poppins({
 
 export const metadata = {
   title: 'Sunajo',
-  description: 'Sunajo Next.js project',
+  description: 'Sunajo - Innovative IT Solutions providing SaaS products, development services, and digital capabilities worldwide.',
+   icons: {
+    icon: '/sunajo_icon.png', 
+  },
 }
 
 type RootLayoutProps = {

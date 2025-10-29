@@ -41,7 +41,7 @@ export default function ScrollToTopButton() {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          className="fixed bottom-12 right-12 z-50 w-16 h-16 
+          className="fixed cursor-pointer bottom-12 right-12 z-50 w-16 h-16 
                      rounded-full flex items-center justify-center 
                      transition-shadow duration-300 focus:outline-none"
           

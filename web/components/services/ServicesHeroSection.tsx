@@ -23,25 +23,36 @@ export default function ServicesHeroSection() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 w-full max-w-[85%] mx-auto flex justify-between items-end pb-8 md:pb-12">
+      <div className="relative z-10 w-full max-w-[85%] mx-auto flex flex-col sm:flex-row justify-between items-center sm:items-end text-center sm:text-left pb-8 md:pb-12">
         
         {/* Left Text */}
-        <div className="text-left max-w-lg space-y-2">
+        <div className="max-w-lg space-y-2">
           <p 
             className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug"
             style={{ fontFamily: '"Poppins", sans-serif' }}
           >
-            Our Services <br />
+            Our{' '}
+            <span
+              className="font-normal"
+              style={{
+                background: 'linear-gradient(to right, royalblue, white)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Services
+            </span>{' '}
+            <br className="hidden sm:block" />
             crafted to empower your business
           </p>
 
-          <p className="text-sm md:text-base text-gray-400 font-light max-w-md">
+          <p className="text-sm md:text-base text-gray-400 font-light max-w-md mx-auto sm:mx-0">
             From web development to digital innovation, we deliver tailored solutions that drive real growth.
           </p>
         </div>
 
-        {/* Right Side Social Icons */}
-        <div className="flex flex-col items-end space-y-2">
+        {/* Right Side Social Icons (hidden on mobile) */}
+        <div className="hidden sm:flex flex-col items-end space-y-2">
           <span className="text-sm text-gray-400 mr-1">Connect With Us!</span>
           
           <div className="flex gap-2">

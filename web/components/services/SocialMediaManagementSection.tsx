@@ -10,7 +10,7 @@ export default function SocialMediaManagementSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#000000]/50 to-[#000814]/90"></div>
 
       {/* Main Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto text-center animate-slideUp">
+      <div className="relative z-10 w-full max-w-7xl mx-auto text-center animate-slideUp">
         
         {/* Heading */}
         <h2

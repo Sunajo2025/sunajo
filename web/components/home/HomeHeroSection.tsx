@@ -56,7 +56,7 @@ export default function HomeHeroSection() {
           <div className="animate-slideUp pt-2 sm:pt-4" style={{ animationDelay: '0.4s' }}>
             <button
               onClick={handleScrollToContact}
-              className="relative inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-medium transition hover:scale-105 transform text-xs sm:text-sm tracking-wide group overflow-visible"
+              className="cursor-pointer relative inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-medium transition hover:scale-105 transform text-xs sm:text-sm tracking-wide group overflow-visible"
               style={{
                 background: 'linear-gradient(to right, royalblue, black)',
                 fontFamily: '"Inter", system-ui, sans-serif',
@@ -113,7 +113,7 @@ export default function HomeHeroSection() {
               {services.map(({ name, icon: Icon }) => (
                 <div
                   key={name}
-                  className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer group"
+                  className="flex items-center gap-2 hover:text-white transition-colors  group"
                   style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
                 >
                   <Icon 

@@ -10,7 +10,7 @@ export default function WebDevelopmentSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#000000]/30 to-[#000814]/90"></div>
 
       {/* Main Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center text-center animate-slideUp">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center text-center animate-slideUp">
         {/* Section Title */}
         <h2
           className="text-4xl sm:text-5xl font-light mb-6 leading-tight"
@@ -33,7 +33,7 @@ export default function WebDevelopmentSection() {
 
         {/* Description */}
         <p
-          className="text-base sm:text-lg text-gray-400 font-light mb-12 max-w-3xl leading-relaxed"
+          className="text-base sm:text-lg text-gray-400 font-light mb-12 max-w-7xl leading-relaxed"
           style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
         >
           We specialize in building responsive, high-performance, and visually stunning web applications.

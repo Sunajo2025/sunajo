@@ -3,6 +3,12 @@
 import { ArrowRight } from 'lucide-react';
 
 export default function AboutIntroductionSection() {
+   const handleScrollTonNext = () => {
+    const contactSection = document.getElementById('AboutContentSection');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <section className="relative py-20 md:py-28 px-4 sm:px-6 lg:px-8 flex justify-center overflow-hidden bg-black">
       
@@ -70,7 +76,8 @@ export default function AboutIntroductionSection() {
         {/* Right Side: Action Button */}
         <div className="w-full md:w-auto flex justify-start md:justify-end mt-6 md:mt-0 animate-slideUp" style={{ animationDelay: '0.2s' }}>
           <button
-            className="relative inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-medium transition hover:scale-105 transform text-xs sm:text-sm tracking-wide group overflow-visible"
+          onClick={handleScrollTonNext}
+            className="cursor-pointer relative inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-medium transition hover:scale-105 transform text-xs sm:text-sm tracking-wide group overflow-visible"
             style={{
               background: 'linear-gradient(to right, royalblue, black)',
               fontFamily: '"Inter", system-ui, sans-serif',

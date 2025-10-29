@@ -11,7 +11,7 @@ export default function DigitalMarketingSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#000000]/50 to-[#000814]/90"></div>
 
       {/* Main container */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-start gap-16 animate-slideUp">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-start gap-16 animate-slideUp">
         
         {/* Left side text */}
         <div className="flex-1 text-left">

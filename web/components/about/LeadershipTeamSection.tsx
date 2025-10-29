@@ -6,54 +6,60 @@ export default function LeadershipTeamSection() {
   const leaders = [
     {
       name: 'Gokulasigamani N',
-      role: 'CHAIRMAN AND CO-FOUNDER',
       image: '/Team/gokul.jpg',
       linkedin: 'https://linkedin.com/in/gokulasigamani',
+      role: 'Founding Member',
     },
     {
       name: 'Gowthaman C',
-      role: 'CO-FOUNDER',
-      image: '/Team/rajiv.jpg',
+      image: '/Team/gowthaman.jpg',
       linkedin: 'https://linkedin.com/in/rajiv',
+       role: 'Founding Member',
     },
     {
       name: 'Harini S',
-      role: 'CHIEF OPERATING OFFICER',
-      image: '/Team/ananya.jpg',
-      linkedin: 'https://linkedin.com/in/ananya',
+      image: '/Team/Harini.jpg',
+      linkedin: 'https://www.linkedin.com/in/harini-subramaniam-21b192226/',
+       role: 'Founding Member',
     },
     {
       name: 'Kirubhasan',
-      role: 'CHIEF TECHNOLOGY OFFICER',
-      image: '/Team/ravi.jpg',
+      image: '/Team/kirubha.png',
       linkedin: 'https://linkedin.com/in/ravi',
+       role: 'Founding Member',
     },
     {
-      name: 'Dharani S',
-      role: 'CHIEF TECHNOLOGY OFFICER',
-      image: '/Team/ravi.jpg',
+      name: 'Dharani S.D',
+      image: '/Team/dharani.jpg',
       linkedin: 'https://linkedin.com/in/ravi',
+       role: 'Founding Member',
     },
     {
       name: 'Harini G',
-      role: 'HEAD OF MARKETING',
-      image: '/Team/sneha.jpg',
+      image: '/Team/hariniG.png',
       linkedin: 'https://linkedin.com/in/sneha',
+       role: 'Founding Member',
     },
     {
       name: 'Dhinesh',
-      role: 'DIRECTOR OF ENGINEERING',
-      image: '/Team/arjun.jpg',
-      linkedin: 'https://linkedin.com/in/arjun',
+      image: '/Team/dhinesh.jpg',
+      linkedin: 'https://linkedin.com/in/dhineshgg',
+       role: 'Founding Member',
     },
-    
+     {
+      name: 'Midun',
+      image: '/Team/midun.png',
+      linkedin: 'https://linkedin.com/in/dhineshgg',
+       role: 'Design Lead',
+    },
   ];
 
   return (
     <section className="relative py-10 md:py-10 md:pb-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
       <div className="absolute inset-0 via-transparent to-transparent"></div>
-      <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-royalblue/10 to-transparent"></div>
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] opacity-50"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] opacity-30"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#000000]/50 to-[#000814]/90"></div>
+
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-4 animate-slideUp">
@@ -97,7 +103,7 @@ export default function LeadershipTeamSection() {
             className="text-sm sm:text-base md:text-lg text-gray-400 max-w-4xl mx-auto font-light leading-relaxed"
             style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
           >
-            Founded in 2017, Quantum Data Technologies is a self-funded, bootstrapped company serving Global Fortune 500 customers. Our commitment to innovation and excellence has positioned us as leaders in the AI and machine learning industry.
+            Founded in 2023, <span className="text-white font-medium">SUNAJO</span> is a modern technology company built by passionate innovators focused on redefining digital experiences. Our founding members share a single vision — to create impactful, accessible, and futuristic digital solutions for the modern world.
           </p>
         </div>
 
@@ -118,7 +124,7 @@ export default function LeadershipTeamSection() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-royalblue/5 opacity-50"></div>
 
-                <div className="relative aspect-[3/4] bg-gradient-to-br from-slate-800 to-slate-900">
+                <div className="relative aspect-[7/8] bg-gradient-to-br from-slate-800 to-slate-900">
                   <img
                     src={leader.image}
                     alt={leader.name}
@@ -129,8 +135,14 @@ export default function LeadershipTeamSection() {
 
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6">
                     <div className="mb-2 sm:mb-3">
+                      <h3
+                        className="text-lg sm:text-xl md:text-2xl font-light text-white"
+                        style={{ fontFamily: '"Poppins", sans-serif' }}
+                      >
+                        {leader.name}
+                      </h3>
                       <p
-                        className="text-[10px] sm:text-xs md:text-sm font-medium tracking-wider uppercase mb-1 sm:mb-2"
+                        className="text-[10px] sm:text-xs md:text-sm tracking-widest uppercase mt-1"
                         style={{
                           fontFamily: '"Inter", system-ui, sans-serif',
                           background: 'linear-gradient(to right, royalblue, white)',
@@ -138,14 +150,8 @@ export default function LeadershipTeamSection() {
                           WebkitTextFillColor: 'transparent',
                         }}
                       >
-                        {leader.role}
+                       {leader.role} 
                       </p>
-                      <h3
-                        className="text-lg sm:text-xl md:text-2xl font-light text-white"
-                        style={{ fontFamily: '"Poppins", sans-serif' }}
-                      >
-                        {leader.name}
-                      </h3>
                     </div>
 
                     <div className="flex items-center justify-between pt-3 border-t border-white/20">

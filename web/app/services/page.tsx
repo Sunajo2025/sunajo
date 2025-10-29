@@ -7,6 +7,7 @@ import MobileAppDevelopmentSection from '@/components/services/MobileAppDevelopm
 import SocialMediaManagementSection from '@/components/services/SocialMediaManagementSection'
 import DigitalMarketingSection from '@/components/services/DigitalMarketingSection'
 import AdvertisementCreationSection from '@/components/services/AdvertisementCreationSection'
+import AiAutomationSection from '@/components/services/AiAutomationSection'
 
 export default function ServicesPage() {
   return (
@@ -14,6 +15,7 @@ export default function ServicesPage() {
       <Navbar />
       <ServicesHeroSection/>
       <ServiceIntroSection/>
+      <AiAutomationSection/>
       <WebDevelopmentSection/>
       <MobileAppDevelopmentSection/>
       <SocialMediaManagementSection/>
