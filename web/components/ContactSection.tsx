@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
@@ -15,7 +15,7 @@ export default function ContactSection() {
     projectDetails: '',
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Replace with your actual EmailJS keys
