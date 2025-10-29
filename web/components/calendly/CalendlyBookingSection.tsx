@@ -1,6 +1,6 @@
 'use client';
 
-import { InlineWidget } from 'react-calendly';
+import React from 'react';
 
 export default function CalendlyBookingSection() {
   return (
@@ -44,12 +44,19 @@ export default function CalendlyBookingSection() {
           Choose a convenient time and we’ll connect to turn your thoughts into results.
         </p>
 
-        {/* Calendly Embed — full width */}
+        {/* Calendly Embed — full width via iframe (no external lib) */}
         <div className="w-full max-w-7xl bg-[#101018]/70 backdrop-blur-lg shadow-2xl rounded-2xl p-4 sm:p-8 border border-white/10 hover:border-royalblue/40 transition-all duration-500">
-          <InlineWidget
-            url="https://calendly.com/gokulsunajo/30min"
-            styles={{ height: '700px', width: '100%' }}
-          />
+          <div className="w-full" style={{ height: 700 }}>
+            <iframe
+              title="Calendly Scheduling"
+              src="https://calendly.com/gokulsunajo/30min?hide_event_type_details=1&hide_gdpr_banner=1"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </div>
       </div>
 
