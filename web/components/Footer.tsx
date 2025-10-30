@@ -44,7 +44,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-5 text-lg">Get In Touch</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Email: info@yourcompany.com <br />
+              Email: info@sunajo.com <br />
               Phone: +91 123 456 7890
             </p>
           </div>
