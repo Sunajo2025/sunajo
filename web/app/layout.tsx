@@ -89,9 +89,9 @@ export const metadata = {
     canonical: 'https://sunajo.com',
   },
   icons: {
-    icon: '/logo.png', // set as main favicon for all browsers
-    shortcut: '/logo.png',
-    apple: '/logo.png',
+    icon: '/sunajo_icon.png', // main favicon
+    shortcut: '/sunajo_icon.png',
+    apple: '/sunajo_icon.png',
   },
   category: 'technology',
 };
@@ -105,9 +105,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/logo.png" sizes="any" />
-        <link rel="icon" type="image/png" href="/logo.png" sizes="32x32" />
-        <link rel="apple-touch-icon" href="/logo.png" />
+        <link rel="icon" href="/sunajo_icon.png" sizes="any" />
+        <link rel="icon" type="image/png" href="/sunajo_icon.png" sizes="192x192" />
+        <link rel="icon" type="image/png" href="/sunajo_icon.png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/sunajo_icon.png" />
       </head>
       <body
         className={`${raleway.className} ${poppins.className} bg-[#0a1420] text-white antialiased`}
