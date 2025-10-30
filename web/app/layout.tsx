@@ -89,9 +89,9 @@ export const metadata = {
     canonical: 'https://sunajo.com',
   },
   icons: {
-    icon: '/sunajo_icon.png',
-    shortcut: '/sunajo_icon.png',
-    apple: '/sunajo_icon.png',
+    icon: '/logo.png', // set as main favicon for all browsers
+    shortcut: '/logo.png',
+    apple: '/logo.png',
   },
   category: 'technology',
 };
@@ -104,6 +104,11 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo.png" sizes="any" />
+        <link rel="icon" type="image/png" href="/logo.png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+      </head>
       <body
         className={`${raleway.className} ${poppins.className} bg-[#0a1420] text-white antialiased`}
       >
