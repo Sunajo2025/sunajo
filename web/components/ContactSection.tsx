@@ -120,10 +120,10 @@ export default function ContactSection() {
 
             <div className="pt-6 sm:pt-8 space-y-3 sm:space-y-4">
               <a
-                href="mailto:sunajo@gmail.com"
+                href="mailto:info@sunajo.com"
                 className="text-white text-base sm:text-lg hover:text-royalblue transition-colors block"
               >
-                sunajo@gmail.com
+                info@sunajo.com
               </a>
 
               <div className="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
