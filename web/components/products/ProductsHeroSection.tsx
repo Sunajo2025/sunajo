@@ -56,7 +56,7 @@ export default function ProductsHeroSection() {
           
           <div className="flex gap-2">
             <a
-              href="#"
+              href="https://x.com/sunajo_official?t=dekSagTwMSEr_V-HQDLIwg&s=08"
               aria-label="Follow us on X"
               className="w-8 h-8 flex items-center justify-center rounded-md bg-white text-slate-900 transition-colors hover:bg-[#4169E1] hover:text-white"
             >
