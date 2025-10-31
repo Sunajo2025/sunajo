@@ -54,8 +54,8 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-5 text-lg">Follow Us</h3>
             <div className="flex items-center gap-6">
               <a href="#" className={royalBlueHover}><Twitter size={22} /></a>
-              <a href="#" className={royalBlueHover}><Instagram size={22} /></a>
-              <a href="#" className={royalBlueHover}><Linkedin size={22} /></a>
+              <a href="https://www.instagram.com/sunajo.in/tagged/?hl=en" className={royalBlueHover}><Instagram size={22} /></a>
+              <a href="https://www.linkedin.com/company/sunajo/" className={royalBlueHover}><Linkedin size={22} /></a>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between text-gray-500 text-sm gap-3">
           <span className="text-center md:text-left">
-            &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+            &copy; {new Date().getFullYear()} Sunajo. All rights reserved.
           </span>
 
           <div className="flex gap-6">

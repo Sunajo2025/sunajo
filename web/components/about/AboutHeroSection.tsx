@@ -63,7 +63,7 @@ export default function BannerComponent() {
             </a>
             
             <a
-              href="#"
+              href="https://www.linkedin.com/company/sunajo/"
               aria-label="Follow us on LinkedIn"
               className="w-8 h-8 flex items-center justify-center rounded-md bg-white text-slate-900 transition-colors hover:bg-[#4169E1] hover:text-white"
             >
@@ -71,7 +71,7 @@ export default function BannerComponent() {
             </a>
             
             <a
-              href="#"
+              href="https://www.instagram.com/sunajo.in/tagged/?hl=en"
               aria-label="Follow us on Instagram"
               className="w-8 h-8 flex items-center justify-center rounded-md bg-white text-slate-900 transition-colors hover:bg-[#4169E1] hover:text-white"
             >
