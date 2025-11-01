@@ -153,6 +153,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body
         className={`${raleway.className} ${poppins.className} bg-[#0a1420] text-white antialiased`}
+        suppressHydrationWarning
       >
         <PageTransitionLoader />
         <main>{children}</main>

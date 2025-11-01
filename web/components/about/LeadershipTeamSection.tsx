@@ -13,7 +13,7 @@ export default function LeadershipTeamSection() {
     {
       name: 'Gowthaman C',
       image: '/Team/gowthaman.jpg',
-      linkedin: 'https://linkedin.com/in/rajiv',
+      linkedin: 'https://linkedin.com/in/gowthamanc18',
        role: 'Founding Member',
     },
     {
@@ -25,19 +25,19 @@ export default function LeadershipTeamSection() {
     {
       name: 'Kirubhasan',
       image: '/Team/kirubha.png',
-      linkedin: 'https://linkedin.com/in/ravi',
+      linkedin: 'https://linkedin.com/in/kirubhasanm',
        role: 'Founding Member',
     },
     {
       name: 'Dharani S.D',
       image: '/Team/dharani.jpg',
-      linkedin: 'https://linkedin.com/in/ravi',
+      linkedin: 'https://linkedin.com/in/dharani-subramaniam-645b07358/',
        role: 'Founding Member',
     },
     {
       name: 'Harini G',
       image: '/Team/hariniG.png',
-      linkedin: 'https://linkedin.com/in/sneha',
+      linkedin: 'https://linkedin.com/in/harini-g-85b65835a',
        role: 'Founding Member',
     },
     {
@@ -49,7 +49,7 @@ export default function LeadershipTeamSection() {
      {
       name: 'Midun',
       image: '/Team/midun.png',
-      linkedin: 'https://linkedin.com/in/dhineshgg',
+      linkedin: 'https://linkedin.com/in/midun-s-8547742b8/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
        role: 'Design Lead',
     },
   ];
