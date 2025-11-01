@@ -7,9 +7,15 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
   const lastScrollY = useRef(0);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,26 +36,43 @@ export default function Navbar() {
 
   // Prevent scrolling when menu is open
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
-    return () => (document.body.style.overflow = 'unset');
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [isMenuOpen]);
 
-  // Close menu when clicking outside (only if click is not on toggle button)
+  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Node;
       if (
         menuRef.current &&
-        !menuRef.current.contains(target) &&
-        !(target as HTMLElement).closest('.menu-toggle')
+        buttonRef.current &&
+        event.target instanceof Node &&
+        !menuRef.current.contains(event.target) &&
+        !buttonRef.current.contains(event.target)
       ) {
         setIsMenuOpen(false);
       }
     };
 
-    if (isMenuOpen) document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, [isMenuOpen]);
+
+  const handleToggleMenu = () => {
+    setIsMenuOpen(prev => !prev);
+  };
 
   const navClass = `
     fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out
@@ -69,8 +92,9 @@ export default function Navbar() {
     <>
       <nav className={navClass}>
         <div className="mx-auto w-[90%] flex items-center justify-between px-3 sm:px-4 md:px-6 py-4 transition-all duration-300 max-sm:px-0">
+          
           {/* Logo */}
-          <a href="/" className="flex items-center">
+          <a href="/" className="flex items-center z-[60]">
             <img
               src="/logo.png"
               alt="Logo"
@@ -81,7 +105,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex flex-1 justify-center gap-12 text-gray-300 text-[1rem]">
+          <div className="hidden md:flex flex-1 justify-center gap-12 text-gray-300 text-md">
             {links.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -95,8 +119,12 @@ export default function Navbar() {
                   }`}
                 >
                   {link.label}
+
+                  {/* Gradient line (ROYAL BLUE → WHITE) only on hover */}
                   {!isActive && (
-                    <span className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-[#4169E1] to-white transform scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-300"></span>
+                    <span
+                      className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-[#4169E1] to-white transform scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-300"
+                    ></span>
                   )}
                 </a>
               );
@@ -113,69 +141,59 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="menu-toggle md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 hover:bg-white/10 rounded-lg transition z-[70]"
+            ref={buttonRef}
+            onClick={handleToggleMenu}
+            className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 hover:bg-white/10 rounded-lg transition relative z-[70]"
             aria-label="Toggle menu"
+            type="button"
           >
-            <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-                isMenuOpen ? 'rotate-45 translate-y-2' : ''
-              }`}
-            ></span>
-            <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-                isMenuOpen ? 'opacity-0' : ''
-              }`}
-            ></span>
-            <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-                isMenuOpen ? '-rotate-45 -translate-y-2' : ''
-              }`}
-            ></span>
+            <span className={`w-6 h-0.5 bg-white transition-all duration-300 pointer-events-none ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-white transition-all duration-300 pointer-events-none ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-white transition-all duration-300 pointer-events-none ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
           </button>
         </div>
       </nav>
 
-      {/* Backdrop */}
-      <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-md z-40 transition-opacity duration-300 md:hidden ${
-          isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
-        onClick={() => setIsMenuOpen(false)}
-      />
+      {/* Backdrop Blur Overlay */}
+      {isMounted && isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-md z-[45] transition-opacity duration-300 md:hidden"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
 
-      {/* Mobile Menu */}
-      <div
-        ref={menuRef}
-        className={`fixed left-1/2 top-24 -translate-x-1/2 w-[85%] sm:w-[70%] max-w-md bg-black/90 backdrop-blur-2xl rounded-2xl border border-white/10 shadow-2xl transition-all duration-300 z-50 md:hidden ${
-          isMenuOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
-        }`}
-      >
-        <div className="flex flex-col items-center py-6 px-4 gap-5 text-center">
-          {links.map((link) => (
+      {/* Mobile Menu (centered horizontally) */}
+      {isMounted && isMenuOpen && (
+        <div
+          ref={menuRef}
+          className="fixed left-1/2 top-24 -translate-x-1/2 w-[85%] sm:w-[70%] max-w-md bg-black/90 backdrop-blur-2xl rounded-2xl border border-white/10 shadow-2xl transition-all duration-300 z-[48] md:hidden animate-in fade-in zoom-in-95"
+        >
+          <div className="flex flex-col items-center py-6 px-4 gap-5 text-center">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className={`text-base font-light transition transform hover:scale-105 ${
+                  pathname === link.href
+                    ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#4169E1] to-white'
+                    : 'text-gray-200 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#4169E1] hover:to-white'
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+
             <a
-              key={link.href}
-              href={link.href}
+              href="/contact"
               onClick={() => setIsMenuOpen(false)}
-              className={`text-[1rem] font-light transition transform hover:scale-105 ${
-                pathname === link.href
-                  ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#4169E1] to-white'
-                  : 'text-gray-200 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#4169E1] hover:to-white'
-              }`}
+              className="mt-2 px-5 py-2 border border-white/30 rounded-full text-white text-sm hover:bg-white/10 transition transform hover:scale-105"
             >
-              {link.label}
+              Contact Us
             </a>
-          ))}
-
-          <a
-            href="/contact"
-            onClick={() => setIsMenuOpen(false)}
-            className="mt-2 px-5 py-2 border border-white/30 rounded-full text-white text-sm hover:bg-white/10 transition transform hover:scale-105"
-          >
-            Contact Us
-          </a>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
