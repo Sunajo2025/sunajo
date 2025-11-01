@@ -30,36 +30,25 @@ export default function Navbar() {
 
   // Prevent scrolling when menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
+    return () => (document.body.style.overflow = 'unset');
   }, [isMenuOpen]);
 
-  // Close menu when clicking outside
+  // Close menu when clicking outside (only if click is not on toggle button)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
       if (
         menuRef.current &&
-        event.target instanceof Node &&
-        !menuRef.current.contains(event.target)
+        !menuRef.current.contains(target) &&
+        !(target as HTMLElement).closest('.menu-toggle')
       ) {
         setIsMenuOpen(false);
       }
     };
 
-    if (isMenuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    if (isMenuOpen) document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isMenuOpen]);
 
   const navClass = `
@@ -80,7 +69,6 @@ export default function Navbar() {
     <>
       <nav className={navClass}>
         <div className="mx-auto w-[90%] flex items-center justify-between px-3 sm:px-4 md:px-6 py-4 transition-all duration-300 max-sm:px-0">
-          
           {/* Logo */}
           <a href="/" className="flex items-center">
             <img
@@ -93,7 +81,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex flex-1 justify-center gap-12 text-gray-300 text-md">
+          <div className="hidden md:flex flex-1 justify-center gap-12 text-gray-300 text-[1rem]">
             {links.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -107,12 +95,8 @@ export default function Navbar() {
                   }`}
                 >
                   {link.label}
-
-                  {/* Gradient line (ROYAL BLUE → WHITE) only on hover */}
                   {!isActive && (
-                    <span
-                      className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-[#4169E1] to-white transform scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-300"
-                    ></span>
+                    <span className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-[#4169E1] to-white transform scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-300"></span>
                   )}
                 </a>
               );
@@ -130,28 +114,42 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 hover:bg-white/10 rounded-lg transition z-[60]"
+            className="menu-toggle md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 hover:bg-white/10 rounded-lg transition z-[70]"
             aria-label="Toggle menu"
           >
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            <span
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                isMenuOpen ? 'rotate-45 translate-y-2' : ''
+              }`}
+            ></span>
+            <span
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                isMenuOpen ? 'opacity-0' : ''
+              }`}
+            ></span>
+            <span
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+              }`}
+            ></span>
           </button>
         </div>
       </nav>
 
-      {/* Backdrop Blur Overlay */}
+      {/* Backdrop */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-md z-40 transition-opacity duration-300 md:hidden
-        ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+        className={`fixed inset-0 bg-black/50 backdrop-blur-md z-40 transition-opacity duration-300 md:hidden ${
+          isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
         onClick={() => setIsMenuOpen(false)}
       />
 
-      {/* Mobile Menu (centered horizontally) */}
+      {/* Mobile Menu */}
       <div
         ref={menuRef}
-        className={`fixed left-1/2 top-24 -translate-x-1/2 w-[85%] sm:w-[70%] max-w-md bg-black/90 backdrop-blur-2xl rounded-2xl border border-white/10 shadow-2xl transition-all duration-300 z-50 md:hidden
-        ${isMenuOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'}`}
+        className={`fixed left-1/2 top-24 -translate-x-1/2 w-[85%] sm:w-[70%] max-w-md bg-black/90 backdrop-blur-2xl rounded-2xl border border-white/10 shadow-2xl transition-all duration-300 z-50 md:hidden ${
+          isMenuOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
+        }`}
       >
         <div className="flex flex-col items-center py-6 px-4 gap-5 text-center">
           {links.map((link) => (
@@ -159,7 +157,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className={`text-base font-light transition transform hover:scale-105 ${
+              className={`text-[1rem] font-light transition transform hover:scale-105 ${
                 pathname === link.href
                   ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#4169E1] to-white'
                   : 'text-gray-200 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#4169E1] hover:to-white'
