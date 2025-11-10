@@ -10,48 +10,48 @@ export default function LeadershipTeamSection() {
       linkedin: 'https://linkedin.com/in/gokulasigamani',
       role: 'Founding Member',
     },
-    // {
-    //   name: 'Gowthaman C',
-    //   image: '/Team/gowthaman.jpg',
-    //   linkedin: 'https://linkedin.com/in/gowthamanc18',
-    //    role: 'Founding Member',
-    // },
-    // {
-    //   name: 'Harini S',
-    //   image: '/Team/Harini.jpg',
-    //   linkedin: 'https://www.linkedin.com/in/harini-subramaniam-21b192226/',
-    //    role: 'Founding Member',
-    // },
-    // {
-    //   name: 'Kirubhasan',
-    //   image: '/Team/kirubha.png',
-    //   linkedin: 'https://linkedin.com/in/kirubhasanm',
-    //    role: 'Founding Member',
-    // },
-    // {
-    //   name: 'Dharani S.D',
-    //   image: '/Team/dharani.jpg',
-    //   linkedin: 'https://linkedin.com/in/dharani-subramaniam-645b07358/',
-    //    role: 'Founding Member',
-    // },
-    // {
-    //   name: 'Harini G',
-    //   image: '/Team/hariniG.png',
-    //   linkedin: 'https://linkedin.com/in/harini-g-85b65835a',
-    //    role: 'Founding Member',
-    // },
-    // {
-    //   name: 'Dhinesh',
-    //   image: '/Team/dhinesh.jpg',
-    //   linkedin: 'https://linkedin.com/in/dhineshgg',
-    //    role: 'Founding Member',
-    // },
-    //  {
-    //   name: 'Midun',
-    //   image: '/Team/midun.png',
-    //   linkedin: 'https://linkedin.com/in/midun-s-8547742b8/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-    //    role: 'Design Lead',
-    // },
+    {
+      name: 'Gowthaman C',
+      image: '/Team/gowthaman.jpg',
+      linkedin: 'https://linkedin.com/in/gowthamanc18',
+       role: 'Founding Member',
+    },
+    {
+      name: 'Harini S',
+      image: '/Team/Harini.jpg',
+      linkedin: 'https://www.linkedin.com/in/harini-subramaniam-21b192226/',
+       role: 'Founding Member',
+    },
+    {
+      name: 'Kirubhasan',
+      image: '/Team/kirubha.png',
+      linkedin: 'https://linkedin.com/in/kirubhasanm',
+       role: 'Founding Member',
+    },
+    {
+      name: 'Dharani S.D',
+      image: '/Team/dharani.jpg',
+      linkedin: 'https://linkedin.com/in/dharani-subramaniam-645b07358/',
+       role: 'Founding Member',
+    },
+    {
+      name: 'Harini G',
+      image: '/Team/hariniG.png',
+      linkedin: 'https://linkedin.com/in/harini-g-85b65835a',
+       role: 'Founding Member',
+    },
+    {
+      name: 'Dhinesh',
+      image: '/Team/dhinesh.jpg',
+      linkedin: 'https://linkedin.com/in/dhineshgg',
+       role: 'Founding Member',
+    },
+     {
+      name: 'Midun',
+      image: '/Team/midun.png',
+      linkedin: 'https://linkedin.com/in/midun-s-8547742b8/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+       role: 'Design Lead',
+    },
   ];
 
   return (
