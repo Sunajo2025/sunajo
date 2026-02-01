@@ -55,7 +55,7 @@ export default function Footer() {
             <div className="flex items-center gap-6">
               <a href="https://x.com/sunajo_official?t=dekSagTwMSEr_V-HQDLIwg&s=08" className={royalBlueHover}><Twitter size={22} /></a>
               <a href="https://www.instagram.com/sunajo.in/tagged/?hl=en" className={royalBlueHover}><Instagram size={22} /></a>
-              <a href="https://www.linkedin.com/company/sunajo/" className={royalBlueHover}><Linkedin size={22} /></a>
+              <a href="https://www.linkedin.com/company/sunajo2025/" className={royalBlueHover}><Linkedin size={22} /></a>
             </div>
           </div>
         </div>

@@ -65,7 +65,7 @@ export default function CapabilitiesHeroSection() {
             </a>
             
             <a
-              href="https://www.linkedin.com/company/sunajo/"
+              href="https://www.linkedin.com/company/sunajo2025/"
               aria-label="Follow us on LinkedIn"
               className="w-8 h-8 flex items-center justify-center rounded-md bg-white text-slate-900 transition-colors hover:bg-[#4169E1] hover:text-white"
             >
